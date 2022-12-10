@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RootNamespace>Formal_Specification_Project</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>True</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Properties\about.jpg" />
+    <None Remove="Properties\copy.png" />
+    <None Remove="Properties\cut.png" />
+    <None Remove="Properties\icons8-close-64.png" />
+    <None Remove="Properties\icons8-engineering-64.png" />
+    <None Remove="Properties\icons8-flower-100.png" />
+    <None Remove="Properties\icons8-light-on-64.png" />
+    <None Remove="Properties\icons8-minimize-64.png" />
+    <None Remove="Properties\Miminimize.png" />
+    <None Remove="Properties\NewFile.png" />
+    <None Remove="Properties\open64.png" />
+    <None Remove="Properties\Paste.png" />
+    <None Remove="Properties\Redo.png" />
+    <None Remove="Properties\Save.png" />
+    <None Remove="Properties\Undo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AvalonEdit" Version="6.1.3.50" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Properties\about.jpg" />
+    <Resource Include="Properties\copy.png" />
+    <Resource Include="Properties\cut.png" />
+    <Resource Include="Properties\icons8-close-64.png" />
+    <Resource Include="Properties\icons8-engineering-64.png" />
+    <Resource Include="Properties\icons8-flower-100.png" />
+    <Resource Include="Properties\icons8-light-on-64.png" />
+    <Resource Include="Properties\icons8-minimize-64.png" />
+    <Resource Include="Properties\Miminimize.png" />
+    <Resource Include="Properties\NewFile.png" />
+    <Resource Include="Properties\open64.png" />
+    <Resource Include="Properties\Paste.png" />
+    <Resource Include="Properties\Redo.png" />
+    <Resource Include="Properties\Save.png" />
+    <Resource Include="Properties\Undo.png" />
+  </ItemGroup>
+
+</Project>
