@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\admin\\Desktop\\Formal Specification Project\\Formal Specification Project\\Formal Specification Project\\Formal Specification Project\\Formal Specification Project.csproj": {}
+    "D:\\FS2022\\Formal Specification Project\\Formal Specification Project\\Formal Specification Project.csproj": {}
   },
   "projects": {
-    "C:\\Users\\admin\\Desktop\\Formal Specification Project\\Formal Specification Project\\Formal Specification Project\\Formal Specification Project\\Formal Specification Project.csproj": {
+    "D:\\FS2022\\Formal Specification Project\\Formal Specification Project\\Formal Specification Project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\Desktop\\Formal Specification Project\\Formal Specification Project\\Formal Specification Project\\Formal Specification Project\\Formal Specification Project.csproj",
+        "projectUniqueName": "D:\\FS2022\\Formal Specification Project\\Formal Specification Project\\Formal Specification Project.csproj",
         "projectName": "Formal Specification Project",
-        "projectPath": "C:\\Users\\admin\\Desktop\\Formal Specification Project\\Formal Specification Project\\Formal Specification Project\\Formal Specification Project\\Formal Specification Project.csproj",
+        "projectPath": "D:\\FS2022\\Formal Specification Project\\Formal Specification Project\\Formal Specification Project.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\Desktop\\Formal Specification Project\\Formal Specification Project\\Formal Specification Project\\Formal Specification Project\\obj\\",
+        "outputPath": "D:\\FS2022\\Formal Specification Project\\Formal Specification Project\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

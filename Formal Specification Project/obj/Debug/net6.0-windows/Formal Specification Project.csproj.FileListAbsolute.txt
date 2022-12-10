@@ -97,3 +97,28 @@ C:\Users\admin\Desktop\Formal Specification Project\Formal Specification Project
 C:\Users\admin\Desktop\Formal Specification Project\Formal Specification Project\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project.pdb
 C:\Users\admin\Desktop\Formal Specification Project\Formal Specification Project\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project.genruntimeconfig.cache
 C:\Users\admin\Desktop\Formal Specification Project\Formal Specification Project\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\ref\Formal Specification Project.dll
+D:\FS2022\Formal Specification Project\Formal Specification Project\bin\Debug\net6.0-windows\Formal Specification Project.exe
+D:\FS2022\Formal Specification Project\Formal Specification Project\bin\Debug\net6.0-windows\Formal Specification Project.deps.json
+D:\FS2022\Formal Specification Project\Formal Specification Project\bin\Debug\net6.0-windows\Formal Specification Project.runtimeconfig.json
+D:\FS2022\Formal Specification Project\Formal Specification Project\bin\Debug\net6.0-windows\Formal Specification Project.dll
+D:\FS2022\Formal Specification Project\Formal Specification Project\bin\Debug\net6.0-windows\Formal Specification Project.pdb
+D:\FS2022\Formal Specification Project\Formal Specification Project\bin\Debug\net6.0-windows\ICSharpCode.AvalonEdit.dll
+D:\FS2022\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project.csproj.AssemblyReference.cache
+D:\FS2022\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\AboutWindow.g.cs
+D:\FS2022\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\MainWindow.g.cs
+D:\FS2022\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\App.g.cs
+D:\FS2022\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project_MarkupCompile.cache
+D:\FS2022\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project_MarkupCompile.lref
+D:\FS2022\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\AboutWindow.baml
+D:\FS2022\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\MainWindow.baml
+D:\FS2022\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project.g.resources
+D:\FS2022\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project.GeneratedMSBuildEditorConfig.editorconfig
+D:\FS2022\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project.AssemblyInfoInputs.cache
+D:\FS2022\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project.AssemblyInfo.cs
+D:\FS2022\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project.csproj.CoreCompileInputs.cache
+D:\FS2022\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project.csproj.CopyComplete
+D:\FS2022\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project.dll
+D:\FS2022\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\refint\Formal Specification Project.dll
+D:\FS2022\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project.pdb
+D:\FS2022\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project.genruntimeconfig.cache
+D:\FS2022\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\ref\Formal Specification Project.dll

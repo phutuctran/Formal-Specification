@@ -266,9 +266,9 @@ namespace Formal_Specification_Project {
 
             File.WriteAllText(batFileName, $"cd /d {directoryFullPath} \ng++ {fileName + extentionFile} -o {fileName + ".exe"} \n");
 
-           
+            string batPathWithoutSpace = batFileName.Replace(" ", "^ ");
             //MessageBox.Show(batFileName);
-            Process proc = Process.Start("cmd.exe", "/c" + batFileName);
+            Process proc = Process.Start("cmd.exe", "/c" + batPathWithoutSpace);
             proc.WaitForExit();
             File.Delete(batFileName);
             Process.Start(directoryFullPath + "\\" + fileName + ".exe");
