@@ -85,7 +85,7 @@ namespace Formal_Specification_Project {
                 textEditorInput.Text = str;
                 inputInFile = opFileDialog.FileName;
                 lastInput = str;
-                tblInputFileName.Text = Path.GetFileName(inputInFile);
+                tblInputFile.Text = Path.GetFileName(inputInFile);
             }
         }
 
@@ -136,7 +136,7 @@ namespace Formal_Specification_Project {
             if (saveFileInput("Lưu file Input?"))
             {
                 MessageBox.Show("Đã lưu!", "Thông báo!");
-                tblInputFileName.Text = Path.GetFileName(inputInFile);
+                tblInputFile.Text = Path.GetFileName(inputInFile);
             }
             if (saveFileOutput("Lưu file Output?"))
             {
@@ -157,7 +157,7 @@ namespace Formal_Specification_Project {
             outputSavePath = "";
             lastInput = "";
             lastOutput = "";
-            tblInputFileName.Text = "Unsaved!";
+            tblInputFile.Text = "Unsaved!";
         }
 
         bool saveFileOutput(string mess)
@@ -232,9 +232,9 @@ namespace Formal_Specification_Project {
 
         private void tblInputFileName_TargetUpdated(object sender, DataTransferEventArgs e)
         {
-            if (string.IsNullOrEmpty(tblInputFileName.Text))
+            if (string.IsNullOrEmpty(tblInputFile.Text))
             {
-                tblInputFileName.Text = "Unsaved!";
+                tblInputFile.Text = "Unsaved!";
             }
         }
 
@@ -273,8 +273,9 @@ namespace Formal_Specification_Project {
 
             string batPathWithoutSpace = batFileName.Replace(" ", "^ ");
             //MessageBox.Show(batFileName);
-            Process proc = Process.Start("cmd.exe", "/k" + batPathWithoutSpace);
+            Process proc = Process.Start("cmd.exe", "/c" + batPathWithoutSpace);
             proc.WaitForExit();
+            //proc.Close();
             File.Delete(batFileName);
             try
             {

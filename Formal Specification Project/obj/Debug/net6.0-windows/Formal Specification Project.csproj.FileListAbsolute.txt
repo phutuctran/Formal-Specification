@@ -122,3 +122,28 @@ D:\FS2022\Formal Specification Project\Formal Specification Project\obj\Debug\ne
 D:\FS2022\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project.pdb
 D:\FS2022\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project.genruntimeconfig.cache
 D:\FS2022\Formal Specification Project\Formal Specification Project\obj\Debug\net6.0-windows\ref\Formal Specification Project.dll
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\bin\Debug\net6.0-windows\Formal Specification Project.exe
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\bin\Debug\net6.0-windows\Formal Specification Project.deps.json
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\bin\Debug\net6.0-windows\Formal Specification Project.runtimeconfig.json
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\bin\Debug\net6.0-windows\Formal Specification Project.dll
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\bin\Debug\net6.0-windows\Formal Specification Project.pdb
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\bin\Debug\net6.0-windows\ICSharpCode.AvalonEdit.dll
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project.csproj.AssemblyReference.cache
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\obj\Debug\net6.0-windows\AboutWindow.g.cs
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\obj\Debug\net6.0-windows\MainWindow.g.cs
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\obj\Debug\net6.0-windows\App.g.cs
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project_MarkupCompile.cache
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project_MarkupCompile.lref
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\obj\Debug\net6.0-windows\AboutWindow.baml
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\obj\Debug\net6.0-windows\MainWindow.baml
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project.g.resources
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project.GeneratedMSBuildEditorConfig.editorconfig
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project.AssemblyInfoInputs.cache
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project.AssemblyInfo.cs
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project.csproj.CoreCompileInputs.cache
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project.csproj.CopyComplete
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project.dll
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\obj\Debug\net6.0-windows\refint\Formal Specification Project.dll
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project.pdb
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\obj\Debug\net6.0-windows\Formal Specification Project.genruntimeconfig.cache
+E:\FORMAL SPECIFICATION\Formal-Specification\Formal Specification Project\obj\Debug\net6.0-windows\ref\Formal Specification Project.dll

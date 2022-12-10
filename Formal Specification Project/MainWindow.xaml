@@ -305,7 +305,7 @@
             >
         </TextBlock>
 
-        <Grid Width="575" Height="300"  Margin="50,150,675,300"  VerticalAlignment="Center" >
+        <Grid Width="575" Height="250"  Margin="50,100,675,300"  VerticalAlignment="Center" >
             <avalonEdit:TextEditor
                     xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
                     Name="textEditorInput"
@@ -329,8 +329,8 @@
                     FontSize="10pt" GotFocus="textEditorOutput_GotFocus"/>
         </Grid>
         <DockPanel
-            Width="575" Height="120"
-            Margin="50,375,675,100"
+            Width="575" Height="170"
+            Margin="50,325,675,100"
             >
             <DockPanel.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -341,7 +341,7 @@
 
 
             <ToggleButton
-        Margin="20,70,5,15"
+        Margin="20,110,5,15"
         x:Name="ToggleButton_Language"
         Command="{Binding language_Command}"
         CommandParameter="{Binding ElementName=ToggleButton_Language}"
@@ -352,7 +352,7 @@
             <TextBlock
                 Text="Generate"
                 FontSize="20"
-                Margin="40,70,35,15"
+                Margin="40,110,35,15"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontWeight="Bold" MouseLeftButtonDown="textblock_generate_MouseLeftButtonDown">
@@ -361,7 +361,7 @@
             <Button
                 x:Name="btnGenerate"
                 Width="45" Height="45"
-                Margin="-15,60,170,15"
+                Margin="-15,110,170,15"
                 BorderBrush="Transparent" 
                 Click="btnGenerate_Click"
                 Background="Transparent"
@@ -374,7 +374,7 @@
             <TextBlock
                 Text="Build"
                 FontSize="20"
-                Margin="-230,70,0,15"
+                Margin="-230,110,0,15"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontWeight="Bold" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown"
@@ -383,7 +383,7 @@
             <Button
                 x:Name="btnBuild"
                 Width="45" Height="45"
-                Margin="-90,60,0,15"
+                Margin="-90,110,0,15"
                 BorderBrush="Transparent" 
                 Click="btnBuild_Click"
                 Background="Transparent"
@@ -395,12 +395,12 @@
 
 
             <TextBlock
-                x:Name="tblInputFileName"
-                Width="350"
+                x:Name="tblInputFile"
+                Width="400"
                 Background="White"
                 Text="Unsaved!"
                 FontSize="20"
-                Margin="-450,10,-30,65"
+                Margin="-450,50,30,65"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontWeight="Bold" TargetUpdated="tblInputFileName_TargetUpdated"
@@ -411,12 +411,38 @@
                 
                 Width="150"
                 Background="Transparent"
-                Text="Input File Name"
+                Text="Input File "
                 FontSize="20"
-                Margin="-605,10,355,65"
+                Margin="-605,50,355,65"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontWeight="Bold"
+                
+                ></TextBlock>
+
+            <TextBlock
+                
+                Width="150"
+                Background="Transparent"
+                Text="Source File "
+                FontSize="20"
+                Margin="-605,-50,355,65"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontWeight="Bold"
+                ></TextBlock>
+
+            <TextBlock
+                x:Name="tblSourceFile"
+                Width="400"
+                Background="White"
+                Text="Unsaved!"
+                FontSize="20"
+                Margin="-450,-50,30,65"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontWeight="Bold" TargetUpdated="tblInputFileName_TargetUpdated"
+
                 ></TextBlock>
 
         </DockPanel>
