@@ -263,15 +263,27 @@ namespace Formal_Specification_Project {
             string fileName = Path.GetFileNameWithoutExtension(outputSavePath);
             string extentionFile = fileInfo.Extension;
             string batFileName = directoryFullPath + @"\" + fileName + ".bat";
+            string exeFilePath = directoryFullPath + @"\" + fileName + ".exe";
+            if (File.Exists(exeFilePath))
+            {
+                File.Delete(exeFilePath);
+            }    
 
             File.WriteAllText(batFileName, $"cd /d {directoryFullPath} \ng++ {fileName + extentionFile} -o {fileName + ".exe"} \n");
 
             string batPathWithoutSpace = batFileName.Replace(" ", "^ ");
             //MessageBox.Show(batFileName);
-            Process proc = Process.Start("cmd.exe", "/c" + batPathWithoutSpace);
+            Process proc = Process.Start("cmd.exe", "/k" + batPathWithoutSpace);
             proc.WaitForExit();
             File.Delete(batFileName);
-            Process.Start(directoryFullPath + "\\" + fileName + ".exe");
+            try
+            {
+                Process.Start(directoryFullPath + "\\" + fileName + ".exe");
+            }catch
+            {
+                MessageBox.Show("Không thể chạy file .exe", "Thông báo!");
+            }
+            
         }
 
     }
