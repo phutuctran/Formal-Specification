@@ -144,6 +144,10 @@ namespace Formal_Specification_Project
             if (this.postFunc.IndexOf("post") == 0) {
                 this.postFunc = this.postFunc.Remove(0, 4);
             }
+            if (this.postFunc[0] != '(')
+            {
+                this.postFunc = '(' +this.postFunc + ')';
+            }
 
             //Console.WriteLine(this.postFunc);
 

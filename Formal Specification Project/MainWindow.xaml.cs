@@ -158,6 +158,7 @@ namespace Formal_Specification_Project {
             lastInput = "";
             lastOutput = "";
             tblInputFile.Text = "Unsaved!";
+            tblSourceFile.Text = "Unsaved!";
         }
 
         bool saveFileOutput(string mess)
@@ -168,6 +169,7 @@ namespace Formal_Specification_Project {
                 {
                     File.WriteAllText(outputSavePath, textEditorOutput.Text);
                     lastOutput = textEditorOutput.Text;
+                    tblSourceFile.Text = Path.GetFileName(outputSavePath);
                     return true;
                 }
                 else
@@ -183,6 +185,7 @@ namespace Formal_Specification_Project {
                             outputSavePath = saveFileDialog.FileName;
                             File.WriteAllText(saveFileDialog.FileName, textEditorOutput.Text);
                             lastOutput = textEditorOutput.Text;
+                            tblSourceFile.Text = Path.GetFileName(outputSavePath);
                             return true;
                         }
                     }
@@ -251,7 +254,10 @@ namespace Formal_Specification_Project {
             }
             if (string.Compare(textEditorOutput.Text, lastOutput) != 0)
             {
-                if (saveFileOutput("Output chưa được lưu, lưu file?")) { }
+                if (saveFileOutput("Output chưa được lưu, lưu file?")) 
+                {
+                    //tblSourceFile.Text = "";
+                }
                 else
                 {
                     return;
@@ -266,7 +272,16 @@ namespace Formal_Specification_Project {
             string exeFilePath = directoryFullPath + @"\" + fileName + ".exe";
             if (File.Exists(exeFilePath))
             {
-                File.Delete(exeFilePath);
+                try
+                {
+                    File.Delete(exeFilePath);
+                }
+                catch 
+                {
+                    MessageBox.Show("Không thể build file!", "Thông báo!");
+                    return;
+                }
+                
             }    
 
             File.WriteAllText(batFileName, $"cd /d {directoryFullPath} \ng++ {fileName + extentionFile} -o {fileName + ".exe"} \n");
