@@ -158,9 +158,26 @@ namespace Formal_Specification_Project
             if (this.postFunc.IndexOf("post") == 0) {
                 this.postFunc = this.postFunc.Remove(0, 4);
             }
-            if (this.postFunc[0] != '(')
+            openBacket = new Stack<int>();
+            flag = false;
+            for (int i = 0; i < this.postFunc.Length; i++)
             {
-                this.postFunc = '(' +this.postFunc + ')';
+                if (this.postFunc[i] == '(')
+                {
+                    openBacket.Push(i);
+                }
+                if (this.postFunc[i] == ')')
+                {
+                    int idx = openBacket.Pop();
+                    if (idx == 0 && i == this.postFunc.Length - 1)
+                    {
+                        flag = true;
+                    }
+                }
+            }
+            if (!flag)
+            {
+                this.postFunc = '(' + this.postFunc + ')';
             }
 
             //Console.WriteLine(this.postFunc);
