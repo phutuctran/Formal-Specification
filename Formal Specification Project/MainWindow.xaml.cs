@@ -304,7 +304,7 @@ namespace Formal_Specification_Project {
 
         private void DockPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            this.DragMove(); 
         }
     }
 }
