@@ -125,10 +125,12 @@ namespace Formal_Specification_Project
             if (this.preFunc.IndexOf("pre") == 0) {
                 this.preFunc = this.preFunc.Remove(0, 3);
             }
+            Stack<int> openBacket;
+            bool flag;
             if (!string.IsNullOrWhiteSpace(this.preFunc))
             {
-                Stack<int> openBacket = new Stack<int>();
-                bool flag = false;
+                openBacket = new Stack<int>();
+                flag = false;
                 for (int i = 0; i < this.preFunc.Length; i++)
                 {
                     if (this.preFunc[i] == '(')
