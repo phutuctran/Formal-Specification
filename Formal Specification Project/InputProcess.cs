@@ -125,13 +125,27 @@ namespace Formal_Specification_Project
             if (this.preFunc.IndexOf("pre") == 0) {
                 this.preFunc = this.preFunc.Remove(0, 3);
             }
-            if (!string.IsNullOrEmpty(this.preFunc)) {
-                if (this.preFunc[0] != '(') {
-                    this.preFunc = this.preFunc.Insert(0, "(");
+
+            Stack<int> openBacket = new Stack<int>();
+            bool flag = false;
+            for (int i = 0; i < this.preFunc.Length; i++)
+            {
+                if (this.preFunc[i] == '(')
+                {
+                    openBacket.Push(i);
                 }
-                if (this.preFunc[this.preFunc.Length - 1] != ')') {
-                    this.preFunc = this.preFunc.Insert(this.preFunc.Length, ")");
+                if (this.preFunc[i] == ')')
+                {
+                    int idx = openBacket.Pop();
+                    if (idx == 0 && i == this.preFunc.Length - 1)
+                    {
+                        flag = true;
+                    }
                 }
+            }
+            if (!flag)
+            {
+                this.preFunc = '(' + this.preFunc + ')';
             }
 
             //Console.WriteLine(this.preFunc);
