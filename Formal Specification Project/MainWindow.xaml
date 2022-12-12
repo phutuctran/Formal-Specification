@@ -119,9 +119,9 @@
 
             <Menu 
                 Background="Transparent"
-                Margin="-1680, 0, 0, 0"
+                Margin="-1660, 0, 500, 0"
                 VerticalAlignment="Top"
-                Width="350" Height="30"
+                Width="320" Height="30"
                 Foreground="Black"
                 >
 
