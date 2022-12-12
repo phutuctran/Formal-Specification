@@ -7,9 +7,13 @@
         mc:Ignorable="d"
         Title="About" Height="400" Width="600"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="SingleBorderWindow">
+        WindowStyle="SingleBorderWindow" Icon="/Properties/information.ico">
     <Grid>
-        <Image Source="/Properties/about.jpg">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="169*"/>
+            <ColumnDefinition Width="431*"/>
+        </Grid.ColumnDefinitions>
+        <Image Source="/Properties/about.jpg" Grid.ColumnSpan="2">
 
         </Image>
     </Grid>

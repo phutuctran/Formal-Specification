@@ -312,6 +312,14 @@ namespace Formal_Specification_Project
             string strTmp = postStr.Substring(idxFirstOpenBracket + 1, idxLastCloseBracket - idxFirstOpenBracket).Trim();
             var forCode = getLoopCode(strTmp);
             postStr = postStr.Substring(idxLastCloseBracket + 2, postStr.Length - idxLastCloseBracket - 3);
+            for (int i = 0; i < postStr.Length; i++)
+            {
+                if (postStr[i] == '=' && postStr[i - 1] != '!' && postStr[i - 1] != '<' && postStr[i - 1] != '>' && postStr[i + 1] != '=' && postStr[i - 1] != '=')
+                {
+                    postStr = postStr.Insert(i, "=");
+                    i++;
+                }
+            }
             str = str + AddTabChar(1) + forCode.forStr + AddTabChar(1) + "{\r\n";
             postStr = postStr.Replace('(', '[').Replace(')', ']');
             if (postStr.IndexOf('{') == -1 && postStr.IndexOf('}') == -1) {

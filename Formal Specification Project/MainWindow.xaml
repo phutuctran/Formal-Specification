@@ -12,7 +12,7 @@
         WindowState="Normal"
         ResizeMode="NoResize"
         AllowsTransparency="True"
-        WindowStartupLocation="CenterScreen"
+        WindowStartupLocation="CenterScreen" Icon="/Properties/build.ico"
         >
 
     <Window.Resources>
