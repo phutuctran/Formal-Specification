@@ -180,7 +180,7 @@ namespace Formal_Specification_Project
                     }
                 }
             }
-            if (!flag)
+            if (!flag && this.postFunc.IndexOf("||") < 0)
             {
                 this.postFunc = '(' + this.postFunc + ')';
             }
