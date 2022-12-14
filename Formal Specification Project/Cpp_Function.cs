@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Formal_Specification_Project
 {
@@ -312,17 +314,11 @@ namespace Formal_Specification_Project
             string strTmp = postStr.Substring(idxFirstOpenBracket + 1, idxLastCloseBracket - idxFirstOpenBracket).Trim();
             var forCode = getLoopCode(strTmp);
             postStr = postStr.Substring(idxLastCloseBracket + 2, postStr.Length - idxLastCloseBracket - 3);
-            for (int i = 0; i < postStr.Length; i++)
-            {
-                if (postStr[i] == '=' && postStr[i - 1] != '!' && postStr[i - 1] != '<' && postStr[i - 1] != '>' && postStr[i + 1] != '=' && postStr[i - 1] != '=')
-                {
-                    postStr = postStr.Insert(i, "=");
-                    i++;
-                }
-            }
+
             str = str + AddTabChar(1) + forCode.forStr + AddTabChar(1) + "{\r\n";
-            postStr = postStr.Replace('(', '[').Replace(')', ']');
+            
             if (postStr.IndexOf('{') == -1 && postStr.IndexOf('}') == -1) {
+                postStr = CreateCon(postStr, result);
                 if (forCode.type == 1) {
                     strTmp = $"        if ({postStr})\r\n" + "        {\r\n            //notthing\r\n        }\r\n        else\r\n        {\r\n            return false;\r\n        }\r\n    }\r\n    return true;\r\n";
                 }
@@ -334,6 +330,7 @@ namespace Formal_Specification_Project
                 idxLastCloseBracket = postStr.IndexOf('}');
                 strTmp = postStr.Substring(0, idxLastCloseBracket + 1).Trim();
                 postStr = postStr.Substring(idxLastCloseBracket + 2, postStr.Length - idxLastCloseBracket - 2);
+                postStr = CreateCon(postStr, result);
                 var forCode2 = getLoopCodeLev2(strTmp, postStr);
                 if (forCode.type == 1) {
                     strTmp = forCode2.forStr + "        if (!flag)\r\n        {\r\n            return false;\r\n        }\r\n\r\n    }\r\n    return true;\r\n";
@@ -345,6 +342,40 @@ namespace Formal_Specification_Project
             str = str + strTmp;
 
             return str;
+        }
+
+        private string CreateCon(string postStr, (string varName, string varType) result) {
+            Stack<int> stack = new Stack<int>();
+            for (int i = 0; i < postStr.Length; i++) {
+                if (postStr[i] == '(') {
+                    stack.Push(i);
+                }
+                if (postStr[i] == ')') {
+                    int idx = stack.Pop();
+                    if (idx == 0 && i == postStr.Length - 1) {
+                        postStr = postStr.Remove(0, 1).Remove(postStr.Length - 2, 1);
+                        break;
+                    }
+
+                    string str = postStr.Substring(idx + 1, i - idx -1);
+                    if (IsAOperator(str)) {
+                        if (IsTheEqualityOperator(str, result)) {
+                            postStr = postStr.Insert(idx + str.IndexOf('=') + 1, "=");
+                            i++;
+                        }
+                    }
+                    else {
+                        postStr = postStr.ReplaceAt(i, ']').ReplaceAt(idx, '[');
+                    }
+                }
+            }
+            for (int i = 0; i < postStr.Length; i++) {
+                if (postStr[i] == '=' && postStr[i - 1] != '!' && postStr[i - 1] != '<' && postStr[i - 1] != '>' && postStr[i - 1] != '=' && postStr[i + 1] != '=') {
+                    postStr = postStr.Insert(i, "=");
+                }
+
+            }
+            return postStr;
         }
 
         private (string forStr, int type) getLoopCodeLev2(string strLoop, string con) {
@@ -466,7 +497,6 @@ namespace Formal_Specification_Project
                     return "bool";
                 case "char*":
                     return "string";
-                    break;
                 case "R*":
                     return "vector<double>";
                 case "N*":
@@ -483,7 +513,7 @@ namespace Formal_Specification_Project
         private string EnterIntNumberFunction = "int NhapSoNguyen(string variableName)\r\n{\r\n    string r;\r\n    bool check = false;\r\n    while (!check)\r\n    {\r\n        cout << \"Nhap so nguyen \"  + variableName + \" = \";\r\n        cin >> r;\r\n        while (r[0] == ' ') r.erase(0, 1);\r\n        while (r[r.size() - 1] == ' ') r.erase(r.size() - 1, 1);\r\n        check = true;\r\n        for (int i = 0; i < r.length(); i++)\r\n            if (!isdigit(r[i]))\r\n                if (r[i] == '-' && i == 0 && r.size() > 1){}\r\n                else\r\n                {\r\n                    check = false;\r\n                    break;\r\n                }\r\n    }\r\n    return stoi(r);\r\n}\r\n\r\n";
         private string EnterDoubleNumberFunction = "double NhapSoThuc(string variableName)\r\n{\r\n    string r;\r\n    bool check = false;\r\n    while (!check)\r\n    {\r\n        cout << \"Nhap so thuc \"  + variableName + \" = \";\r\n        cin >> r;\r\n        check = true;\r\n        while (r[0] == ' ') r.erase(0, 1);\r\n        while (r[r.size() - 1] == ' ') r.erase(r.size() - 1, 1);\r\n        bool haveDot = false;\r\n        for (int i = 0; i < r.length(); i++)\r\n            if (!isdigit(r[i]))\r\n                if (r[i] == '-' && i == 0 && r.size() > 1) {}\r\n                else if (r[i] == '.' && !haveDot)\r\n                    {\r\n                        haveDot = true;\r\n                    }\r\n                    else\r\n                    {\r\n                        check = false;\r\n                        break;\r\n                    }\r\n    }\r\n    return stod(r);\r\n}\r\n\r\n";
         private string EnterNaturalNumberFunction = "int NhapSoTuNhien(string variableName)\r\n{\r\n    string r;\r\n    bool check = false;\r\n    while (!check)\r\n    {\r\n        cout << \"Nhap so nguyen \"  + variableName + \" = \";\r\n        cin >> r;\r\n        while (r[0] == ' ') r.erase(0, 1);\r\n        while (r[r.size() - 1] == ' ') r.erase(r.size() - 1, 1);\r\n        check = true;\r\n        for (int i = 0; i < r.length(); i++)\r\n            if (!isdigit(r[i]))\r\n                if (r[i] == '-' && i == 0 && r.size() > 1){}\r\n                else\r\n                {\r\n                    check = false;\r\n                    break;\r\n                }\r\n        if (check && stoi(r) < 0)\r\n            check = false;\r\n    }\r\n    return stoi(r);\r\n}\r\n\r\n";
-        private string EnterBoolVarFunction = "bool NhapGiaTriDungSai(string variableName)\r\n{\r\n    bool r = false;\r\n    bool check = false;\r\n    while (!check)\r\n    {\r\n        string s;\r\n        //cin.ignore();\r\n        cout << \"Nhap gia tri dung sai (T/F, D/S, True/False, Dung/Sai) \" << variableName << \" = \";\r\n        getline(cin, s);\r\n        while (s[0] == ' ') s.erase(0, 1);\r\n        while (s[s.size() - 1] == ' ') s.erase(s.size() - 1, 1);\r\n        for (int i = 0; i < s.size(); i++)\r\n            if (s[i] > 31) s[i] = s[i] - 32;\r\n        if (s == \"TRUE\"\r\n            || s == \"T\"\r\n            || s == \"D\"\r\n            || s == \"DUNG\")\r\n        {\r\n            r = true;\r\n            check = true;\r\n        }\r\n        if (s == \"FALSE\"\r\n            || s == \"F\"\r\n            || s == \"S\"\r\n            || s == \"SAI\")\r\n        {\r\n            r = false;\r\n            check = true;\r\n        }\r\n    }\r\n    return r;\r\n}\r\n\r\n";
+        private string EnterBoolVarFunction = "bool NhapGiaTriDungSai(string variableName)\r\n{\r\n    bool r = false;\r\n    bool check = false;\r\n    while (!check)\r\n    {\r\n        string s;\r\n        //cin.ignore();\r\n        cout << \"Nhap gia tri dung sai (T/F, D/S, True/False, Dung/Sai) \" << variableName << \" = \";\r\n        getline(cin, s);\r\n        while (s[0] == ' ') s.erase(0, 1);\r\n        while (s[s.size() - 1] == ' ') s.erase(s.size() - 1, 1);\r\n        for (int i = 0; i < s.size(); i++)\r\n            if (s[i] > 96) s[i] = s[i] - 32;\r\n        if (s == \"TRUE\"\r\n            || s == \"T\"\r\n            || s == \"D\"\r\n            || s == \"DUNG\")\r\n        {\r\n            r = true;\r\n            check = true;\r\n        }\r\n        if (s == \"FALSE\"\r\n            || s == \"F\"\r\n            || s == \"S\"\r\n            || s == \"SAI\")\r\n        {\r\n            r = false;\r\n            check = true;\r\n        }\r\n    }\r\n    return r;\r\n}\r\n\r\n";
         private string EnterStringFunction = "string NhapChuoi(string varibleName)\r\n{\r\n    cout << \"Nhap chuoi \" << varibleName << \": \";\r\n    string str;\r\n    getline(cin, str);\r\n    return str;\r\n}\r\n\r\n";
     }
 }

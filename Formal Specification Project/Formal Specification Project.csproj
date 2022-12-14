@@ -10,10 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="flower.gif" />
+    <None Remove="icons8-flower-100.png" />
     <None Remove="Properties\about.jpg" />
     <None Remove="Properties\build.ico" />
     <None Remove="Properties\copy.png" />
     <None Remove="Properties\cut.png" />
+    <None Remove="Properties\flower.gif" />
     <None Remove="Properties\icons8-close-64.png" />
     <None Remove="Properties\icons8-engineering-64.png" />
     <None Remove="Properties\icons8-flower-100.png" />
@@ -34,10 +37,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="flower.gif" />
+    <Resource Include="icons8-flower-100.png" />
     <Resource Include="Properties\about.jpg" />
     <Resource Include="Properties\build.ico" />
     <Resource Include="Properties\copy.png" />
     <Resource Include="Properties\cut.png" />
+    <Resource Include="Properties\flower.gif" />
     <Resource Include="Properties\icons8-close-64.png" />
     <Resource Include="Properties\icons8-engineering-64.png" />
     <Resource Include="Properties\icons8-flower-100.png" />

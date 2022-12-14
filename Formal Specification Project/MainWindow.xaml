@@ -6,6 +6,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Formal_Specification_Project"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com" 
         mc:Ignorable="d"
         Title="MainWindow" Height="750" Width="1300"
         WindowStyle="None"
@@ -462,7 +463,8 @@
             Margin="50,600,700,0"
             >
             <TextBlock.Background>
-                <ImageBrush ImageSource="/Properties/icons8-flower-100.png"
+
+                <ImageBrush ImageSource="/icons8-flower-100.png"
                                     Stretch="Uniform"></ImageBrush>
             </TextBlock.Background>
         </TextBlock>
@@ -471,7 +473,7 @@
             Margin="-150,600,900,0"
             >
             <TextBlock.Background>
-                <ImageBrush ImageSource="/Properties/icons8-flower-100.png"
+                <ImageBrush ImageSource="/icons8-flower-100.png"
                                     Stretch="Uniform"></ImageBrush>
             </TextBlock.Background>
         </TextBlock>
