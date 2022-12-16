@@ -19,19 +19,22 @@ namespace Formal_Specification_Project
 			set { inputTextBox = value; }
 		}
 
-		private string outputCode;
+		private string outputCodeCpp;
 
-		public string OutputCode {
-			get { return outputCode; }
-			set { outputCode = value; }
+		public string OutputCodeCpp {
+			get { return outputCodeCpp; }
+			set { outputCodeCpp = value; }
 		}
 
-		private string  outputCode_Highlighting;
+        private string  outputCodeJS;
+                            
+        public string  OutputCodeJS
+        {
+            get { return outputCodeJS; }
+            set { outputCodeJS = value; }
+        }
 
-		public string  OutputCode_Highlighting {
-			get { return outputCode_Highlighting; }
-			set { outputCode_Highlighting = value; }
-		}
+
 
 
 
@@ -43,7 +46,11 @@ namespace Formal_Specification_Project
 			if (!string.IsNullOrWhiteSpace(inputTextBox)) {
 				Cpp_Function CppCode = new Cpp_Function(inputTextBox);
 				CppCode.GenerateCodeCpp();
-				outputCode = CppCode.CodeOutput;
+				outputCodeCpp = CppCode.CodeOutput;
+
+                JS_Function JSCode = new JS_Function(inputTextBox);
+                JSCode.GenerateCodeJS();
+                outputCodeJS = JSCode.CodeOutput;
 				
 			}
 			else {
@@ -119,7 +126,7 @@ namespace Formal_Specification_Project
                     if (result == MessageBoxResult.Yes)
                     {
                         SaveFileDialog saveFileDialog = new SaveFileDialog();
-                        saveFileDialog.Filter = ("C++ file|*.cpp");
+                        saveFileDialog.Filter = ("JavaScript file|*.js");
 
                         if (saveFileDialog.ShowDialog() == true)
                         {
@@ -273,7 +280,22 @@ namespace Formal_Specification_Project
 
         private bool BuildJS()
         {
-            return true;
+            //MessageBox.Show(outputSavePath);
+            if (File.Exists(outputSavePath))
+            {
+                try
+                {
+                    Process.Start("cmd.exe", "/c node " + outputSavePath);
+                    return true;
+                }
+                catch
+                {
+                    MessageBox.Show("Không thể thực thi!", "Thông báo!");
+                    return false;
+                }
+            }
+            MessageBox.Show("Không thể thực thi!", "Thông báo!");
+            return false;
         }
 
 

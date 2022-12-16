@@ -1,8 +1,10 @@
 ﻿
 using ICSharpCode.AvalonEdit;
+using ICSharpCode.AvalonEdit.Highlighting;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -64,7 +66,15 @@ namespace Formal_Specification_Project {
             if (opFileDialog.ShowDialog() == true) {
                 string str = File.ReadAllText(opFileDialog.FileName);
                 IOFunc.saveFileInput("File input cũ chưa được lưu, lưu file?", textEditorInput.Text);
-                IOFunc.saveFileOutputCpp("File output C++ chưa được lưu, lưu file?", textEditorOutput.Text);
+                if (currentLang == 1)
+                {
+                    IOFunc.saveFileOutputCpp("File output C++ chưa được lưu, lưu file?", textEditorOutput.Text);
+                }
+                else
+                {
+                    IOFunc.saveFileOutputJS("File output JavaScript chưa được lưu, lưu file?", textEditorOutput.Text);
+                }
+                
                 ResetAll();
                 textEditorInput.Text = str;
                 IOFunc.inputInFile = opFileDialog.FileName;
@@ -83,10 +93,19 @@ namespace Formal_Specification_Project {
 
 
         void GenerateCode() {
+            //MessageBox.Show(currentLang.ToString());
             MainProcess mainProcess = new MainProcess();
             mainProcess.InputTextBox = textEditorInput.Text;
             mainProcess.FSProcess();
-            textEditorOutput.Text = mainProcess.OutputCode;
+            if (currentLang == 1)
+            {
+                textEditorOutput.Text = mainProcess.OutputCodeCpp;
+            }
+            else
+            {
+                textEditorOutput.Text = mainProcess.OutputCodeJS;
+            }
+            
         }
 
         private void btnCut_Click(object sender, RoutedEventArgs e) {
@@ -220,15 +239,20 @@ namespace Formal_Specification_Project {
             this.DragMove(); 
         }
 
-        private void ToggleButton_Language_Checked(object sender, RoutedEventArgs e)
+
+        private void ToggleButton_Language_Click(object sender, RoutedEventArgs e)
         {
             if (ToggleButton_Language.IsChecked == true)
             {
+                textEditorOutput.SyntaxHighlighting = (IHighlightingDefinition)(new HighlightingDefinitionTypeConverter().ConvertFrom("JavaScript"));
                 currentLang = 2;
+                GenerateCode();
             }
             else
             {
+                textEditorOutput.SyntaxHighlighting = (IHighlightingDefinition)(new HighlightingDefinitionTypeConverter().ConvertFrom("C++"));
                 currentLang = 1;
+                GenerateCode();
             }
         }
     }
