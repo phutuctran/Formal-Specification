@@ -62,7 +62,7 @@ namespace Formal_Specification_Project
         }
 
         public void InitProcess() {
-            this.funcName = this.initFunc.Substring(0, this.initFunc.IndexOf('('));
+           this.funcName = this.initFunc.Substring(0, this.initFunc.IndexOf('('));
             string inputType_str = this.initFunc.Substring(this.initFunc.IndexOf('(') + 1, this.initFunc.IndexOf(')') - this.initFunc.IndexOf('(') - 1);
             //Console.WriteLine(inputType_str);
             string[] _listInput = inputType_str.Split(',');

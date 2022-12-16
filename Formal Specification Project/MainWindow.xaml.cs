@@ -25,10 +25,11 @@ namespace Formal_Specification_Project {
     /// </summary>
     public partial class MainWindow : Window {
 
-        string lastInput = "";
-        string lastOutput = "";
-        string inputInFile = "";
-        string outputSavePath = "";
+
+        IOFunctions IOFunc = new IOFunctions();
+        BuildFunctions buildFunc;
+
+        int currentLang = 1;
 
         public MainWindow() {
             InitializeComponent();
@@ -52,40 +53,23 @@ namespace Formal_Specification_Project {
         }
 
         private void btnNew_Click(object sender, RoutedEventArgs e) {
-            if (string.Compare(lastInput, textEditorInput.Text) != 0)
-            {
-                if (saveFileInput("File input cũ chưa được lưu, lưu file?"))
-                {
-                    MessageBox.Show("Đã lưu!", "Thông báo!");
-                }    
-            }
-            if (string.Compare(lastOutput, textEditorOutput.Text) != 0)
-            {
-                if (saveFileOutput("File output cũ chưa được lưu, lưu file?"))
-                {
-                    MessageBox.Show("Đã lưu!", "Thông báo!");
-                }
-            }
+            IOFunc.saveFileInput("File input chưa được lưu, lưu fule?", textEditorInput.Text);
+            IOFunc.saveFileOutputCpp("File output C++ chưa được lưu, lưu file?", textEditorOutput.Text);
             ResetAll();
+            
         }
 
         private void btnOpen_Click(object sender, RoutedEventArgs e) {
             Microsoft.Win32.OpenFileDialog opFileDialog = new Microsoft.Win32.OpenFileDialog();
             if (opFileDialog.ShowDialog() == true) {
                 string str = File.ReadAllText(opFileDialog.FileName);
-                if (string.Compare(lastInput, textEditorInput.Text) != 0)
-                {
-                    saveFileInput("File input cũ chưa được lưu, lưu file?");
-                }
-                if (string.Compare(lastOutput, textEditorOutput.Text) != 0)
-                {
-                    saveFileOutput("File output cũ chưa được lưu, lưu file?");
-                }
+                IOFunc.saveFileInput("File input cũ chưa được lưu, lưu file?", textEditorInput.Text);
+                IOFunc.saveFileOutputCpp("File output C++ chưa được lưu, lưu file?", textEditorOutput.Text);
                 ResetAll();
                 textEditorInput.Text = str;
-                inputInFile = opFileDialog.FileName;
-                lastInput = str;
-                tblInputFile.Text = Path.GetFileName(inputInFile);
+                IOFunc.inputInFile = opFileDialog.FileName;
+                IOFunc.lastInput = str;
+                tblInputFile.Text = Path.GetFileName(IOFunc.inputInFile);
             }
         }
 
@@ -133,15 +117,28 @@ namespace Formal_Specification_Project {
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e) {
-            if (saveFileInput("Lưu file Input?"))
+            if (IOFunc.saveFileInput("Lưu file Input?", textEditorInput.Text))
             {
                 MessageBox.Show("Đã lưu!", "Thông báo!");
-                tblInputFile.Text = Path.GetFileName(inputInFile);
+                tblInputFile.Text = Path.GetFileName(IOFunc.inputInFile);
             }
-            if (saveFileOutput("Lưu file Output?"))
+            if (currentLang == 1)
             {
-                MessageBox.Show("Đã lưu!", "Thông báo!");
-            }      
+                if (IOFunc.saveFileOutputCpp("Lưu file Output?", textEditorOutput.Text))
+                {
+                    MessageBox.Show("Đã lưu!", "Thông báo!");
+                    tblInputFile.Text = Path.GetFileName(IOFunc.outputSavePathCpp);
+                }
+            }
+            else
+            {
+                if (IOFunc.saveFileOutputJS("Lưu file Output?", textEditorOutput.Text))
+                {
+                    MessageBox.Show("Đã lưu!", "Thông báo!");
+                    tblInputFile.Text = Path.GetFileName(IOFunc.outputSavePathJS);
+                }
+            }
+
         }
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -151,80 +148,11 @@ namespace Formal_Specification_Project {
 
         void ResetAll()
         {
+            IOFunc = new IOFunctions();
             textEditorInput.Text = "";
             textEditorOutput.Text = "";
-            inputInFile = "";
-            outputSavePath = "";
-            lastInput = "";
-            lastOutput = "";
             tblInputFile.Text = "Unsaved!";
             tblSourceFile.Text = "Unsaved!";
-        }
-
-        bool saveFileOutput(string mess)
-        {
-            if (string.Compare(textEditorOutput.Text, lastOutput) != 0)
-            {
-                if (!string.IsNullOrEmpty(outputSavePath))
-                {
-                    File.WriteAllText(outputSavePath, textEditorOutput.Text);
-                    lastOutput = textEditorOutput.Text;
-                    tblSourceFile.Text = Path.GetFileName(outputSavePath);
-                    return true;
-                }
-                else
-                {
-                    MessageBoxResult result = MessageBox.Show(mess, "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        SaveFileDialog saveFileDialog = new SaveFileDialog();
-                        saveFileDialog.Filter = ("C++ file|*.cpp");
-
-                        if (saveFileDialog.ShowDialog() == true)
-                        {
-                            outputSavePath = saveFileDialog.FileName;
-                            File.WriteAllText(saveFileDialog.FileName, textEditorOutput.Text);
-                            lastOutput = textEditorOutput.Text;
-                            tblSourceFile.Text = Path.GetFileName(outputSavePath);
-                            return true;
-                        }
-                    }
-                }
-            }
-            return false;
-        }
-
-        bool saveFileInput(string mess)
-        {
-            if (string.Compare(textEditorInput.Text, lastInput) != 0)
-            {
-                if (!string.IsNullOrEmpty(inputInFile))
-                {
-                    File.WriteAllText(inputInFile, textEditorInput.Text);
-                    lastInput = textEditorInput.Text;
-                    return true;
-                }
-                else
-                {
-                    MessageBoxResult result = MessageBox.Show(mess, "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        SaveFileDialog saveFileDialog = new SaveFileDialog();
-                        saveFileDialog.Filter = ("Text file|*.txt");
-
-                        if (saveFileDialog.ShowDialog() == true)
-                        {
-                            inputInFile = saveFileDialog.FileName;
-                            File.WriteAllText(saveFileDialog.FileName, textEditorInput.Text);
-                            lastInput = textEditorInput.Text;
-                            return true;
-                        }
-
-                    }
-                }
-
-            }
-            return false;
         }
 
         private void btnBuild_Click(object sender, RoutedEventArgs e)
@@ -235,9 +163,11 @@ namespace Formal_Specification_Project {
 
         private void tblInputFileName_TargetUpdated(object sender, DataTransferEventArgs e)
         {
-            if (string.IsNullOrEmpty(tblInputFile.Text))
+
+            TextBlock tb = (TextBlock)sender;
+            if (string.IsNullOrEmpty(tb.Text))
             {
-                tblInputFile.Text = "Unsaved!";
+                tb.Text = "Unsaved!";
             }
         }
 
@@ -251,60 +181,55 @@ namespace Formal_Specification_Project {
             if (string.IsNullOrEmpty(textEditorOutput.Text))
             {
                 return;
+
             }
-            if (string.Compare(textEditorOutput.Text, lastOutput) != 0)
+            string savePath = "";
+            if (currentLang == 1)
             {
-                if (saveFileOutput("Output chưa được lưu, lưu file?")) 
+                if (IOFunc.saveFileOutputCpp("File output C++ chưa được lưu, lưu file?", textEditorOutput.Text))
                 {
-                    //tblSourceFile.Text = "";
+                    tblInputFile.Text = Path.GetFileName(IOFunc.outputSavePathCpp);
+                    savePath = IOFunc.outputSavePathCpp;
                 }
                 else
                 {
                     return;
                 }
             }
-
-            FileInfo fileInfo = new FileInfo(outputSavePath);
-            string directoryFullPath = fileInfo.DirectoryName;
-            string fileName = Path.GetFileNameWithoutExtension(outputSavePath);
-            string extentionFile = fileInfo.Extension;
-            string batFileName = directoryFullPath + @"\" + fileName + ".bat";
-            string exeFilePath = directoryFullPath + @"\" + fileName + ".exe";
-            if (File.Exists(exeFilePath))
+            else
             {
-                try
+                if (IOFunc.saveFileOutputJS("File output JS chưa được lưu, lưu file?", textEditorOutput.Text))
                 {
-                    File.Delete(exeFilePath);
+                    tblInputFile.Text = Path.GetFileName(IOFunc.outputSavePathJS);
+                    savePath = IOFunc.outputSavePathJS;
                 }
-                catch 
+                else
                 {
-                    MessageBox.Show("Không thể build file!", "Thông báo!");
                     return;
                 }
-                
-            }    
-
-            File.WriteAllText(batFileName, $"cd /d {directoryFullPath} \ng++ {fileName + extentionFile} -o {fileName + ".exe"} \n");
-
-            string batPathWithoutSpace = batFileName.Replace(" ", "^ ");
-            //MessageBox.Show(batFileName);
-            Process proc = Process.Start("cmd.exe", "/c" + batPathWithoutSpace);
-            proc.WaitForExit();
-            //proc.Close();
-            File.Delete(batFileName);
-            try
-            {
-                Process.Start(directoryFullPath + "\\" + fileName + ".exe");
-            }catch
-            {
-                MessageBox.Show("Không thể chạy file .exe", "Thông báo!");
             }
+            buildFunc = new BuildFunctions();
+            buildFunc.CurrentLanguage = currentLang;
+            buildFunc.SetSavePath(savePath);
+            buildFunc.Build();
             
         }
 
         private void DockPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove(); 
+        }
+
+        private void ToggleButton_Language_Checked(object sender, RoutedEventArgs e)
+        {
+            if (ToggleButton_Language.IsChecked == true)
+            {
+                currentLang = 2;
+            }
+            else
+            {
+                currentLang = 1;
+            }
         }
     }
 }

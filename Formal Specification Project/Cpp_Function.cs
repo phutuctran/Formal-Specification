@@ -351,7 +351,7 @@ namespace Formal_Specification_Project
                     stack.Push(i);
                 }
                 if (postStr[i] == ')') {
-                    int idx = stack.Pop();
+                     int idx = stack.Pop();
                     if (idx == 0 && i == postStr.Length - 1) {
                         postStr = postStr.Remove(0, 1).Remove(postStr.Length - 2, 1);
                         break;
@@ -365,7 +365,10 @@ namespace Formal_Specification_Project
                         }
                     }
                     else {
-                        postStr = postStr.ReplaceAt(i, ']').ReplaceAt(idx, '[');
+                        if (!HaveOperator(str)) {
+                            postStr = postStr.ReplaceAt(i, ']').ReplaceAt(idx, '[');
+                        }
+                        
                     }
                 }
             }
@@ -434,6 +437,15 @@ namespace Formal_Specification_Project
                 str = str + "    ";
             }
             return str;
+        }
+
+        private bool HaveOperator(string str) {
+            return str.IndexOf('=') >= 0
+                || str.IndexOf(">") >= 0
+                || str.IndexOf('<') >= 0
+                || str.IndexOf('!') >= 0
+                || str.IndexOf("&&") >= 0
+                || str.IndexOf("||") >= 0;
         }
 
         private bool IsTheEqualityOperator(string _operator, (string varName, string varType) result) {
