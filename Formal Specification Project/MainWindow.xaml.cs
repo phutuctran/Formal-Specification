@@ -56,7 +56,14 @@ namespace Formal_Specification_Project {
 
         private void btnNew_Click(object sender, RoutedEventArgs e) {
             IOFunc.saveFileInput("File input chưa được lưu, lưu fule?", textEditorInput.Text);
-            IOFunc.saveFileOutputCpp("File output C++ chưa được lưu, lưu file?", textEditorOutput.Text);
+            if (currentLang == 1)
+            {
+                IOFunc.saveFileOutputCpp("File output C++ chưa được lưu, lưu file?", textEditorOutput.Text);
+            }
+            else
+            {
+                IOFunc.saveFileOutputJS("File output JavaScript chưa được lưu, lưu file?", textEditorOutput.Text);
+            }
             ResetAll();
             
         }
@@ -207,7 +214,7 @@ namespace Formal_Specification_Project {
             {
                 if (IOFunc.saveFileOutputCpp("File output C++ chưa được lưu, lưu file?", textEditorOutput.Text))
                 {
-                    tblInputFile.Text = Path.GetFileName(IOFunc.outputSavePathCpp);
+                    tblSourceFile.Text = Path.GetFileName(IOFunc.outputSavePathCpp);
                     savePath = IOFunc.outputSavePathCpp;
                 }
                 else
@@ -219,7 +226,7 @@ namespace Formal_Specification_Project {
             {
                 if (IOFunc.saveFileOutputJS("File output JS chưa được lưu, lưu file?", textEditorOutput.Text))
                 {
-                    tblInputFile.Text = Path.GetFileName(IOFunc.outputSavePathJS);
+                    tblSourceFile.Text = Path.GetFileName(IOFunc.outputSavePathJS);
                     savePath = IOFunc.outputSavePathJS;
                 }
                 else
