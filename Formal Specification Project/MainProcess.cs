@@ -296,7 +296,7 @@ namespace Formal_Specification_Project
                 try
                 {
                     //MessageBox.Show(outputSavePath);
-                    Process.Start("cmd.exe", "/c node " + outputSavePath.Replace(" ", "^ "));
+                    Process.Start("cmd.exe", "/c node " + outputSavePath.Replace(" ", "^ ")) ;
                     return true;
                 }
                 catch
