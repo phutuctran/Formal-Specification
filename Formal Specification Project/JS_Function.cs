@@ -154,7 +154,7 @@ namespace Formal_Specification_Project
 
             string mainFunc = "function main()\r\n{\r\n" + MainFuncProcess(inputProcess.PreFunc, listInput, result, funcName) + "}\r\n\r\n";
 
-            this.codeOutput = this.codeOutput + mainFunc + "main()\r\nconsole.log('Press any key to continue.');\r\nprocess.stdin.once('data', function () {});";
+            this.codeOutput = this.codeOutput + mainFunc + "main()\r\nconsole.log('Press any key to continue.');\r\nprocess.stdin.once('data', function () {process.exit();});";
 
 
         }
