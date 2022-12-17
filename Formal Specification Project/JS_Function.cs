@@ -198,8 +198,12 @@ namespace Formal_Specification_Project
                     strInput = strInput + var.varName;
                 }
             }
-
-            strMain = strMain + "    console.log(\"Ket qua " + result.varName + " la: \" + " + funcName + "(" + strInput + "));\r\n\r\n";
+            if (result.varType == "B") {
+                strMain = strMain + "   console.log(\"Ket qua " + result.varName + " la:\"" + "+ (" + funcName + "(" + strInput + ")===true? \"Dung\": \"Sai\"));"; 
+            }
+            else {
+                strMain = strMain + "    console.log(\"Ket qua " + result.varName + " la: \" + " + funcName + "(" + strInput + "));\r\n\r\n";
+            }
             return strMain;
         }
 
