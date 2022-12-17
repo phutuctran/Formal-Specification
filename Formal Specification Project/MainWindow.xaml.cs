@@ -153,7 +153,7 @@ namespace Formal_Specification_Project {
                 if (IOFunc.saveFileOutputCpp("Lưu file Output?", textEditorOutput.Text))
                 {
                     MessageBox.Show("Đã lưu!", "Thông báo!");
-                    tblInputFile.Text = Path.GetFileName(IOFunc.outputSavePathCpp);
+                    tblInputFile.Text = Path.GetFileName(IOFunc.inputInFile);
                 }
             }
             else
@@ -161,7 +161,7 @@ namespace Formal_Specification_Project {
                 if (IOFunc.saveFileOutputJS("Lưu file Output?", textEditorOutput.Text))
                 {
                     MessageBox.Show("Đã lưu!", "Thông báo!");
-                    tblInputFile.Text = Path.GetFileName(IOFunc.outputSavePathJS);
+                    tblInputFile.Text = Path.GetFileName(IOFunc.inputInFile);
                 }
             }
 
