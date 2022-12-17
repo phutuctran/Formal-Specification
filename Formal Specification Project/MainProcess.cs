@@ -135,10 +135,18 @@ namespace Formal_Specification_Project
                             lastOutputJS = textEditorOutput;
                             return true;
                         }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        return false;
                     }
                 }
             }
-            return false;
+            return true;
         }
 
         public bool saveFileOutputCpp(string mess, string textEditorOutput)
@@ -166,10 +174,12 @@ namespace Formal_Specification_Project
                             lastOutputCpp = textEditorOutput;
                             return true;
                         }
+                        return false;
                     }
+                    return false;
                 }
             }
-            return false;
+            return true;
         }
     }
 
@@ -285,6 +295,7 @@ namespace Formal_Specification_Project
             {
                 try
                 {
+                    //MessageBox.Show(outputSavePath);
                     Process.Start("cmd.exe", "/c node " + outputSavePath);
                     return true;
                 }
